@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="bmiService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:req="http://nl.hu.iac/bmiservice/request"
+                  xmlns:rsp="http://nl.hu.iac/bmiservice/response"
+                  xmlns:flt="http://nl.hu.iac/bmiservice/fault"
+                  xmlns="http://nl.hu.iac/bmiservice/"
+                  targetNamespace="http://nl.hu.iac/bmiservice/">
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="http://nl.hu.iac/bmiservice/request"
+                        schemaLocation="bmiRequest.xsd" />
+            <xsd:import namespace="http://nl.hu.iac/bmiservice/response"
+                        schemaLocation="bmiResponse.xsd" />
+            <xsd:import namespace="http://nl.hu.iac/bmiservice/fault"
+                        schemaLocation="bmiFault.xsd" />
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="request">
+        <wsdl:part name="request" element="req:bmiRequest" />
+    </wsdl:message>
+    <wsdl:message name="response">
+        <wsdl:part name="response" element="rsp:bmiResponse" />
+    </wsdl:message>
+    <wsdl:message name="fault">
+        <wsdl:part name="fault" element="flt:bmiFault" />
+    </wsdl:message>
+    <wsdl:portType name="bmiServiceInterface">
+        <wsdl:operation name="calculateBmi">
+            <wsdl:input message="request" />
+            <wsdl:output message="response" />
+            <wsdl:fault name="fault" message="fault" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="bmiServiceBinding" type="bmiServiceInterface">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="calculateBmi">
+            <soap:operation soapAction="" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="bmiServiceService">
+        <wsdl:port name="WS-Port" binding="bmiServiceBinding">
+            <soap:address location="http://localhost:8080/soap_nick/soap" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

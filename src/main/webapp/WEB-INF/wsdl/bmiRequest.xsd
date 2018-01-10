@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://nl.hu.iac/bmiservice/request"
+           elementFormDefault="qualified" targetNamespace="http://nl.hu.iac/bmiservice/request">
+
+    <!-- root element -->
+    <xs:element name="bmiRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="height" type="xs:positiveInteger" />
+                <xs:element name="weight" type="xs:positiveInteger" />
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
+</xs:schema>
