@@ -6,7 +6,7 @@
     <element name="bmiFault">
         <complexType>
             <annotation>
-                <documentation>message is niet voor de gebruiker, kan ook null zijn</documentation>
+                <documentation>Foutmelding tijdens het berekenen van het BMI. Dit is zeer waarschijnlijk doordat er een NaN doorgevoerd wordt.</documentation>
             </annotation>
             <sequence>
                 <element name="errorCode" nillable="false" type="short"/>

@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://nl.hu.iac/bmiservice/request"
-           elementFormDefault="qualified" targetNamespace="http://nl.hu.iac/bmiservice/request">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://nl.hu.iac/bmiservice/request"
+           elementFormDefault="qualified"
+           targetNamespace="http://nl.hu.iac/bmiservice/request">
 
     <!-- root element -->
+    <xs:annotation>
+        <xs:appinfo>The BMI Request</xs:appinfo>
+        <xs:documentation xml:lang="en">
+            This is the BMI Request that accepts two positive integers called height and weight.
+            I haven't chosen for doubles to keep the service relative easy for the end user.
+
+            The height is given in centimeters, e.g: 190 stands for a height of 190cm. This is also chosen to avoid confusion with doubles for the end user.
+            The weight is given in kilograms.
+        </xs:documentation>
+    </xs:annotation>
+
     <xs:element name="bmiRequest">
         <xs:complexType>
             <xs:sequence>

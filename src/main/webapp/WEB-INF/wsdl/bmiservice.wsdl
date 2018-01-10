@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions name="bmiService"
+                  xmlns:xs = "http://www.w3.org/2001/XMLSchema"
                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
@@ -19,6 +20,7 @@
                         schemaLocation="bmiFault.xsd" />
         </xsd:schema>
     </wsdl:types>
+
     <wsdl:message name="request">
         <wsdl:part name="request" element="req:bmiRequest" />
     </wsdl:message>
@@ -28,13 +30,16 @@
     <wsdl:message name="fault">
         <wsdl:part name="fault" element="flt:bmiFault" />
     </wsdl:message>
+
     <wsdl:portType name="bmiServiceInterface">
         <wsdl:operation name="calculateBmi">
             <wsdl:input message="request" />
             <wsdl:output message="response" />
             <wsdl:fault name="fault" message="fault" />
         </wsdl:operation>
+
     </wsdl:portType>
+
     <wsdl:binding name="bmiServiceBinding" type="bmiServiceInterface">
         <soap:binding style="document"
                       transport="http://schemas.xmlsoap.org/soap/http" />
@@ -51,6 +56,7 @@
             </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
+
     <wsdl:service name="bmiServiceService">
         <wsdl:port name="WS-Port" binding="bmiServiceBinding">
             <soap:address location="http://localhost:8080/soap_nick/soap" />

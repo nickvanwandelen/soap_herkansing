@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
+<xs:schema xmlns:xs ="http://www.w3.org/2001/XMLSchema"
         xmlns:tns="http://nl.hu.iac/bmiservice/response"
         elementFormDefault="qualified"
         targetNamespace="http://nl.hu.iac/bmiservice/response">
-    <element name="bmiResponse">
-        <complexType>
-            <sequence>
-                <element name="result" type="double"/>
-            </sequence>
-        </complexType>
-    </element>
-</schema>
+
+    <xs:annotation>
+        <xs:appinfo>The BMI Response</xs:appinfo>
+        <xs:documentation xml:lang="en">
+            This is the BMI Response, it returns after the BMI has been calculated.
+            Because of a division between the height and length variables, a double has been chosen as a returntype.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="bmiResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
